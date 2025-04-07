@@ -1,9 +1,11 @@
+# 表格形式呈现
+
 import json
 import pandas as pd
 from collections import defaultdict
 
 # 读取JSON数据
-with open('ssq/data.json', 'r', encoding='utf-8') as f:
+with open('data.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # 生成纯数字列标题（01-49）
@@ -35,4 +37,4 @@ for issue, numbers in data.items():
 df = pd.DataFrame(excel_data, columns=columns)
 
 # 保存Excel文件
-df.to_excel('ssq/ssq_results.xlsx', index=False)
+df.to_excel('ssq_results.xlsx', index=False)

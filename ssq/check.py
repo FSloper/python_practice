@@ -1,3 +1,5 @@
+# 判断中将等级
+
 import json
 
 def load_latest_prize():

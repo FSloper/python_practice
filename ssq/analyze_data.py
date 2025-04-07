@@ -1,3 +1,6 @@
+# 蓝红球分布图生成
+
+
 import json
 
 import matplotlib.pyplot as plt
