@@ -17,7 +17,7 @@ def jquery_mock_callback():
 
 def get_stock_data(
         stock_code: str,  # 股票代码
-        beg: str = '20240911',  # 开始日期，19000101，表示 1900年1月1日
+        beg: str = '19000101',  # 开始日期，19000101，表示 1900年1月1日
         end: str = '20500101',  # 结束日期
         klt: int = 101,  # 行情之间的时间间隔 1、5、15、30、60分钟; 101:日; 102:周; 103:月
         fqt: int = 1,  # 复权方式，0 不复权 1 前复权 2 后复权
@@ -81,6 +81,7 @@ def get_stock_data(
             ('fqt', f'{fqt}'),
         )
         json_response = requests.get(qeury_url, params=params, headers=headers, verify=False).text
+        print(json_response)
     except Exception as e:
         print(f"股票 {stock_code} 数据获取失败: {str(e)}")
         return None

@@ -3,14 +3,14 @@ import json
 import requests
 
 qeury_url = ('http://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice?'
-             'name=ssq&'
+             'name=kl8&'
              'issueCount=&'
              'issueStart=&'
              'issueEnd=&'
              'dayStart=&'
              'dayEnd=&'
              'pageNo=1&'
-             'pageSize=10&'
+             'pageSize=90&'
              'week=&'
              'systemType=PC')
 headers = {
@@ -27,6 +27,7 @@ headers = {
 }
 json_response = requests.get(qeury_url, headers=headers, verify=False).text
 json_response_result = json.loads(json_response)['result']
+print(json_response_result)
 
 # 读取现有数据
 with open('data.json', 'r', encoding='utf-8') as f:
@@ -38,7 +39,7 @@ added_count = 0
 # 遍历所有获取的期数（按从新到旧顺序）
 for issue in json_response_result:
     if issue['code'] not in data:
-        numbers = f"{issue['red']},{issue['blue']}"
+        numbers = f"{issue['red']}"
         new_data[issue['code']] = numbers
         added_count += 1
 
